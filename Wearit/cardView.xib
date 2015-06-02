@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="13F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner">
+            <connections>
+                <outlet property="bottomWear" destination="oPr-75-Vgm" id="fRx-ZC-sOC"/>
+                <outlet property="likeBtn" destination="3gx-c3-G05" id="t60-BB-jQZ"/>
+                <outlet property="topWear" destination="BOy-Y5-i9x" id="rLJ-7J-D5e"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="527"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="BOy-Y5-i9x">
+                    <rect key="frame" x="8" y="0.0" width="398" height="255"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="215" id="oVP-Bg-Wdk"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="oVP-Bg-Wdk"/>
+                        </mask>
+                    </variation>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="oPr-75-Vgm">
+                    <rect key="frame" x="8" y="264" width="398" height="255"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="255" id="CcS-zn-Aus"/>
+                        <constraint firstAttribute="height" constant="204" id="ke8-rH-r1B"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="ke8-rH-r1B"/>
+                        </mask>
+                    </variation>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gx-c3-G05">
+                    <rect key="frame" x="147" y="473" width="64" height="64"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="64" id="XkG-5b-9Db"/>
+                        <constraint firstAttribute="height" constant="64" id="eLs-Ol-dBU"/>
+                    </constraints>
+                    <state key="normal" image="heart.png">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="0.283556535" blue="0.25393670979999999" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstItem="BOy-Y5-i9x" firstAttribute="trailing" secondItem="iN0-l3-epB" secondAttribute="trailingMargin" id="6KO-uN-Pgb"/>
+                <constraint firstAttribute="bottom" secondItem="3gx-c3-G05" secondAttribute="bottom" constant="-10" id="A0P-Bm-1Y2"/>
+                <constraint firstAttribute="trailing" secondItem="oPr-75-Vgm" secondAttribute="trailing" constant="8" id="DUi-oL-oQb"/>
+                <constraint firstItem="oPr-75-Vgm" firstAttribute="leading" secondItem="BOy-Y5-i9x" secondAttribute="leading" id="LVv-Aa-vLB"/>
+                <constraint firstItem="oPr-75-Vgm" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottomMargin" id="NbZ-S8-5e3"/>
+                <constraint firstItem="3gx-c3-G05" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="147" id="Vov-L8-fMJ"/>
+                <constraint firstItem="oPr-75-Vgm" firstAttribute="top" secondItem="BOy-Y5-i9x" secondAttribute="bottom" constant="9" id="cVy-SC-foS"/>
+                <constraint firstItem="BOy-Y5-i9x" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="cxA-C0-wN0"/>
+                <constraint firstItem="oPr-75-Vgm" firstAttribute="trailing" secondItem="BOy-Y5-i9x" secondAttribute="trailing" id="flG-Tf-2fM"/>
+                <constraint firstItem="BOy-Y5-i9x" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="iaX-6Q-LZy"/>
+                <constraint firstItem="BOy-Y5-i9x" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="qOO-8P-WuA"/>
+                <constraint firstAttribute="bottom" secondItem="oPr-75-Vgm" secondAttribute="bottom" constant="50" id="xvK-rZ-E7u"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="qOO-8P-WuA"/>
+                    <exclude reference="xvK-rZ-E7u"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="111" y="195"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="heart.png" width="128" height="128"/>
+    </resources>
+</document>
