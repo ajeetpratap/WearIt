@@ -164,6 +164,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18078E381B1E1FD10089FBD0 /* SwipeAndDrag */ = {
+			isa = PBXGroup;
+			children = (
+				184712811B1C350200A7A9AA /* cardView.xib */,
+				1847128F1B1C3C6D00A7A9AA /* cardView.h */,
+				184712901B1C3C6D00A7A9AA /* cardView.m */,
+				1812727F1B1D5C9C00CE8861 /* DraggableView.h */,
+				181272801B1D5C9C00CE8861 /* DraggableView.m */,
+				181272811B1D5C9C00CE8861 /* OverlayView.h */,
+				181272821B1D5C9C00CE8861 /* OverlayView.m */,
+			);
+			name = SwipeAndDrag;
+			sourceTree = "<group>";
+		};
+		18078E391B1E1FF70089FBD0 /* ClosetControls */ = {
+			isa = PBXGroup;
+			children = (
+				18311A311B19A8B90092D463 /* closetViewController.h */,
+				18311A321B19A8B90092D463 /* closetViewController.m */,
+				18078E301B1DF4250089FBD0 /* ClosetCollectionHeaderView.h */,
+				18078E311B1DF4250089FBD0 /* ClosetCollectionHeaderView.m */,
+				18078E331B1DF4250089FBD0 /* ClosetViewCell.h */,
+				18078E321B1DF4250089FBD0 /* ClosetViewCell.m */,
+			);
+			name = ClosetControls;
+			sourceTree = "<group>";
+		};
 		184712331B1BFD8600A7A9AA /* OpenWeatherMapAPI */ = {
 			isa = PBXGroup;
 			children = (
@@ -223,14 +250,8 @@
 		187CB7CE1B15DFD400A23618 /* Wearit */ = {
 			isa = PBXGroup;
 			children = (
-				18078E301B1DF4250089FBD0 /* ClosetCollectionHeaderView.h */,
-				18078E311B1DF4250089FBD0 /* ClosetCollectionHeaderView.m */,
-				18078E331B1DF4250089FBD0 /* ClosetViewCell.h */,
-				18078E321B1DF4250089FBD0 /* ClosetViewCell.m */,
-				1812727F1B1D5C9C00CE8861 /* DraggableView.h */,
-				181272801B1D5C9C00CE8861 /* DraggableView.m */,
-				181272811B1D5C9C00CE8861 /* OverlayView.h */,
-				181272821B1D5C9C00CE8861 /* OverlayView.m */,
+				18078E391B1E1FF70089FBD0 /* ClosetControls */,
+				18078E381B1E1FD10089FBD0 /* SwipeAndDrag */,
 				184712371B1BFFF300A7A9AA /* AFNetwork */,
 				184712331B1BFD8600A7A9AA /* OpenWeatherMapAPI */,
 				187CB7F51B15EB7500A23618 /* SWRevealViewController.h */,
@@ -244,15 +265,10 @@
 				187CB7F91B15EC8800A23618 /* MainViewController.m */,
 				187CB7FC1B15F0F900A23618 /* LoginViewController.h */,
 				187CB7FD1B15F0F900A23618 /* LoginViewController.m */,
-				18311A311B19A8B90092D463 /* closetViewController.h */,
-				18311A321B19A8B90092D463 /* closetViewController.m */,
 				18311A341B19A8D20092D463 /* FavViewController.h */,
 				18311A351B19A8D20092D463 /* FavViewController.m */,
 				18311A371B19C58B0092D463 /* SideViewController.h */,
 				18311A381B19C58B0092D463 /* SideViewController.m */,
-				184712811B1C350200A7A9AA /* cardView.xib */,
-				1847128F1B1C3C6D00A7A9AA /* cardView.h */,
-				184712901B1C3C6D00A7A9AA /* cardView.m */,
 				187CB7CF1B15DFD400A23618 /* Supporting Files */,
 			);
 			path = Wearit;

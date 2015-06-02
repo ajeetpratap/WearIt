@@ -70,7 +70,7 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     static NSString *identifier = @"Cell";
-    NSFileManager *fileMgr = [NSFileManager defaultManager];
+   // NSFileManager *fileMgr = [NSFileManager defaultManager];
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                          NSUserDomainMask, YES);
