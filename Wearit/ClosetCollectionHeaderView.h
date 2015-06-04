@@ -11,5 +11,7 @@
 @interface ClosetCollectionHeaderView : UICollectionReusableView
 @property (weak, nonatomic) IBOutlet UIImageView *backgroundImage;
 @property (weak, nonatomic) IBOutlet UILabel *title;
+@property (weak, nonatomic) IBOutlet UIButton *addClothBtn;
+
 
 @end

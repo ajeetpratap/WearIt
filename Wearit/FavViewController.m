@@ -77,6 +77,7 @@
     NSString *documentsDirectory = [paths objectAtIndex:0];
     NSString* path = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",
                       [favPair objectAtIndex:indexPath.row]] ];
+   
     UIImage* image = [UIImage imageWithContentsOfFile:path];
     
     UICollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];

@@ -44,7 +44,9 @@
         float width = self.view.frame.size.width;
         float frameHeight = self.view.frame.size.height - 140.0f;
         NSLog(@"%f ---> %f",width,frameHeight);
-        
+        CGRect frame = CGRectMake(0.0f, 120.0f, 414.0f,527.0f );
+        cardView *allCards = [[cardView alloc]initWithFrame:frame];
+        [self.view addSubview:allCards];
         
     }
     
@@ -80,9 +82,7 @@
                                  [result[@"main"][@"temp"] floatValue] ];
         
         self.weatherDesc.text = [NSString stringWithFormat:@"%@, we suggest",result[@"weather"][0][@"description"]];
-        CGRect frame = CGRectMake(0.0f, 120.0f, 414.0f,527.0f );
-        cardView *allCards = [[cardView alloc]initWithFrame:frame];
-        [self.view addSubview:allCards];
+        
     }];
     
 
@@ -124,6 +124,15 @@
         
         
     }
+    
+    
+#warning code to delete the plist (DEVELOPMENT TESTING ONLY)
+    
+   /* NSError *error;
+    if(![[NSFileManager defaultManager] removeItemAtPath:path error:&error])
+    {
+        //TODO: Handle/Log error
+    }*/
     
     //create or fav.plist also if its not available
     NSString *favPath = [documentsDirectory stringByAppendingPathComponent:@"myfav.plist"];

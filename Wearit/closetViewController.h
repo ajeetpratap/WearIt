@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface closetViewController : UICollectionViewController
+@interface closetViewController : UICollectionViewController<UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *sidebarButton;
 
 @property (nonatomic, strong) NSArray *shirtArray;
@@ -16,4 +16,5 @@
 @property (nonatomic, strong) NSArray *titleArray;
 @property (nonatomic, retain) NSArray *arrays;
 
+- (IBAction)selectPhoto:(UIButton *)sender;
 @end

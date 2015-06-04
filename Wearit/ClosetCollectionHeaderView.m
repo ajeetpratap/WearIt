@@ -9,7 +9,7 @@
 #import "ClosetCollectionHeaderView.h"
 
 @implementation ClosetCollectionHeaderView
-
+@synthesize addClothBtn;
 - (id)initWithFrame:(CGRect)frame
 {
     self = [super initWithFrame:frame];
@@ -27,5 +27,6 @@
     // Drawing code
 }
 */
+
 
 @end

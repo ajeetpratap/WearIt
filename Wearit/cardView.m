@@ -107,9 +107,24 @@ static const float CARD_WIDTH = 320; // width of the draggable card
     int bottomCount = (int)pants.count;
     int randomShirtIndex = arc4random() % shirtCount;
     int randomPantIndex = arc4random() % bottomCount;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                         NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    NSString* shirtPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",[shirts objectAtIndex:randomShirtIndex]]] ;
+    NSString* pantPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",[pants objectAtIndex:randomPantIndex]]];
+    
     
         UIImage *topImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[shirts objectAtIndex:randomShirtIndex]]];
+    if(!topImage)
+    {
+        topImage = [UIImage imageWithContentsOfFile:shirtPath];
+    }
         UIImage *bottomImage = [UIImage imageNamed:[NSString stringWithFormat:@"%@",[pants objectAtIndex:randomPantIndex]]];
+    if(!bottomImage)
+    {
+        bottomImage = [UIImage imageWithContentsOfFile:pantPath];
+    }
     draggableView.topWear.image = topImage;
     draggableView.bottomWear.image = bottomImage;
     draggableView.delegate = self;

@@ -370,15 +370,41 @@
                             <rect key="frame" x="0.0" y="44" width="600" height="50"/>
                             <autoresizingMask key="autoresizingMask"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pEw-bd-4eV">
-                                    <rect key="frame" x="114" y="14" width="164" height="21"/>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pEw-bd-4eV">
+                                    <rect key="frame" x="16" y="14" width="164" height="21"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="164" id="fLB-Zl-jUy"/>
+                                    </constraints>
                                     <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="17"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pHX-gQ-02v">
+                                    <rect key="frame" x="460" y="9" width="125" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="125" id="WTf-Wp-zZ8"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="STHeitiSC-Light" family="Heiti SC" pointSize="15"/>
+                                    <state key="normal" title="Button">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="selectPhoto:" destination="w3J-23-5AG" eventType="touchUpInside" id="3lc-4N-6vm"/>
+                                    </connections>
+                                </button>
                             </subviews>
                             <color key="backgroundColor" red="0.89363960600000003" green="0.38468521420000001" blue="0.42795372479999999" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="pEw-bd-4eV" firstAttribute="leading" secondItem="zay-rK-j4e" secondAttribute="leadingMargin" constant="8" id="45i-Is-l7c"/>
+                                <constraint firstItem="pHX-gQ-02v" firstAttribute="centerY" secondItem="pEw-bd-4eV" secondAttribute="centerY" id="CGX-gP-9Zr"/>
+                                <constraint firstItem="pHX-gQ-02v" firstAttribute="top" secondItem="zay-rK-j4e" secondAttribute="topMargin" constant="1" id="dH7-sc-qbb"/>
+                                <constraint firstItem="pEw-bd-4eV" firstAttribute="top" secondItem="zay-rK-j4e" secondAttribute="topMargin" constant="6" id="gcI-Dq-LRg"/>
+                                <constraint firstAttribute="trailingMargin" secondItem="pHX-gQ-02v" secondAttribute="trailing" constant="7" id="l90-AQ-BAI"/>
+                                <constraint firstAttribute="bottomMargin" secondItem="pEw-bd-4eV" secondAttribute="bottom" constant="7" id="uHJ-DW-ysw"/>
+                            </constraints>
                             <connections>
+                                <outlet property="addClothBtn" destination="pHX-gQ-02v" id="xUz-Gu-xnb"/>
                                 <outlet property="title" destination="pEw-bd-4eV" id="Inu-kT-Hcz"/>
                             </connections>
                         </collectionReusableView>
@@ -398,7 +424,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eK4-sz-mAW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1776" y="-444"/>
+            <point key="canvasLocation" x="1912" y="-492"/>
         </scene>
     </scenes>
     <resources>

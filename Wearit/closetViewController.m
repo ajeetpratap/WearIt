@@ -14,6 +14,8 @@
 @interface closetViewController ()
 {
     NSArray *list;
+    NSString* uploadingNow;
+    NSString *path;
 }
 @end
 
@@ -32,7 +34,7 @@
         [self.sidebarButton setAction: @selector( revealToggle: )];
     }
     
-    list = [[NSArray alloc]initWithObjects:@"Shirt Collection",@"Trouser Collection", nil];
+    list = [[NSArray alloc]initWithObjects:@"Shirt",@"Trouser", nil];
     _titleArray = [[NSArray alloc] initWithObjects:@"Top Wear", @"Trousers", nil];
     //loads your closet
     [self loadCollection];
@@ -51,7 +53,7 @@
     //Get the documents directory path
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString *path = [documentsDirectory stringByAppendingPathComponent:@"closet.plist"];
+    path = [documentsDirectory stringByAppendingPathComponent:@"closet.plist"];
     NSFileManager *fileManager = [NSFileManager defaultManager];
     
     if (![fileManager fileExistsAtPath: path]) {
@@ -67,6 +69,7 @@
         NSArray *value = (NSArray*)[data objectForKey:@"summer"];
         
         _shirtArray =  [NSArray arrayWithArray:[value objectAtIndex:0]];
+        NSLog(@"%@",_shirtArray);
         _pantArray = [NSArray arrayWithArray:[value objectAtIndex:1]];
         _arrays = [[NSArray alloc] initWithObjects:_shirtArray , _pantArray, nil];
     }
@@ -87,8 +90,10 @@
     
     if (kind == UICollectionElementKindSectionHeader) {
         ClosetCollectionHeaderView *headerView = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"HeaderView" forIndexPath:indexPath];
-        NSString *title = [[NSString alloc]initWithFormat:@"%@", [list objectAtIndex:indexPath.section]];
+        NSString *title = [[NSString alloc]initWithFormat:@"%@ Collection", [list objectAtIndex:indexPath.section]];
         headerView.title.text = title;
+        NSString *BtnTitle = [[NSString alloc]initWithFormat:@"Add %@", [list objectAtIndex:indexPath.section]];
+        [headerView.addClothBtn setTitle:BtnTitle forState:UIControlStateNormal];
         reusableview = headerView;
     }
     return reusableview;
@@ -103,12 +108,78 @@
     UIImageView *closetImageView = (UIImageView *)[cell viewWithTag:100];
     NSLog(@"%@",[_arrays[indexPath.section] objectAtIndex:indexPath.row]);
     
-    closetImageView.image = [UIImage imageNamed:[_arrays[indexPath.section] objectAtIndex:indexPath.row]];
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                         NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+   NSString* _path = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",                                                                         [_arrays[indexPath.section]objectAtIndex:indexPath.row]]];
+    UIImage *myImage = [UIImage imageWithContentsOfFile:_path];
+    if(!myImage)
+    {
+        closetImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",                                                                         [_arrays[indexPath.section]objectAtIndex:indexPath.row]]];
+    }
+    else{
+        closetImageView.image = [UIImage imageWithContentsOfFile:_path];
+    }
+    
     return cell;
 }
 
 
 
+- (void)selectPhoto:(UIButton *)sender {
+
+    NSLog(@"%@",sender.titleLabel.text);
+    uploadingNow = [NSString stringWithFormat:@"%@",sender.titleLabel.text];
+    UIImagePickerController *picker = [[UIImagePickerController alloc] init];
+    picker.delegate = self;
+    picker.allowsEditing = YES;
+    picker.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+    
+    
+}
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+    UIImage *chosenImage = info[UIImagePickerControllerEditedImage];
+    NSLog(@"%@",chosenImage);
+    //self.imageView.image = chosenImage;
+    NSData *imageData=UIImagePNGRepresentation(chosenImage);
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    
+    if([uploadingNow  isEqual: @"Add Shirt"])
+    {
+        NSString *strPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"myshirt%lu.png",(unsigned long)_shirtArray.count]];
+        [imageData writeToFile:strPath atomically:YES];
+        //update the plist
+        NSMutableDictionary *newData = [[NSMutableDictionary alloc]init];
+        NSMutableArray *newShirtArray = [NSMutableArray arrayWithArray:_shirtArray];
+        [newShirtArray addObject:[NSString stringWithFormat:@"myshirt%lu.png",(unsigned long)_shirtArray.count]];
+        NSArray *summer = [NSArray arrayWithObjects:newShirtArray,_pantArray, nil];
+        [newData setObject:summer forKey:@"summer"];
+        [newData writeToFile:path atomically:YES];
+        
+    }
+    else{
+        NSString* strPath = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"mypant%lu.png",(unsigned long)_pantArray.count]];
+        [imageData writeToFile:strPath atomically:YES];
+        //update the plist
+        NSMutableDictionary *newData = [[NSMutableDictionary alloc]init];
+        NSMutableArray *newPantArray = [NSMutableArray arrayWithArray:_pantArray];
+        [newPantArray addObject:[NSString stringWithFormat:@"mypant%lu.png",(unsigned long)_pantArray.count]];
+        NSArray *summer = [NSArray arrayWithObjects:_shirtArray,newPantArray, nil];
+        [newData setObject:summer forKey:@"summer"];
+        [newData writeToFile:path atomically:YES];
+    }
+    [self loadCollection];
+    [self.collectionView reloadData];
+    
+    
+    [picker dismissViewControllerAnimated:YES completion:NULL];
+    
+}
 
 /*
 #pragma mark - Navigation
