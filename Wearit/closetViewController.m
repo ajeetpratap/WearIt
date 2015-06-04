@@ -106,13 +106,14 @@
     ClosetViewCell *cell = (ClosetViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
     UIImageView *closetImageView = (UIImageView *)[cell viewWithTag:100];
-    NSLog(@"%@",[_arrays[indexPath.section] objectAtIndex:indexPath.row]);
+    
     
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                          NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
    NSString* _path = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithFormat:@"%@",                                                                         [_arrays[indexPath.section]objectAtIndex:indexPath.row]]];
     UIImage *myImage = [UIImage imageWithContentsOfFile:_path];
+    //check the image is found at the given path if not get it from the app bundle
     if(!myImage)
     {
         closetImageView.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@",                                                                         [_arrays[indexPath.section]objectAtIndex:indexPath.row]]];
